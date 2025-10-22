@@ -76,7 +76,7 @@ command line.
 3. Run the pipeline:
 
    ```bash
-   python -m desan_new.pipeline --project_path path/to/src \
+   python -m desan.pipeline --project_path path/to/src \
      --sanitizers asan,ubsan --opt_level O1 --build_dir out --verify
    ```
 
