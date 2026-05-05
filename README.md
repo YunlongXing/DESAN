@@ -1,3 +1,3 @@
-# DESAN: Rethinking Sanitizer Instrumentation through Memory Access Semantics
+# DESAN: DE-redundancy of SANitizer checks
 
 The artifacts and analysis results of DESAN.
