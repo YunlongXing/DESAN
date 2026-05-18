@@ -1,0 +1,2 @@
+Suite,Benchmark,Compile Units,Fallback Units,Original Checks,Core Checks,Core / All,Removed Checks,Removed / All,Removed / Core,Runtime Native,Runtime Before,Runtime After,Sanitizer Overhead %,DESAN Overhead %,Overhead Reduction %,Sanitizer Overhead %,DESAN Overhead %,Overhead Reduction %,Native Status,Before Status,After Status
+OpenSource,zopfli,13,0,2423,2423,100.0,1859,76.723070573669,76.723070573669,1.4210653333333334,7.332992,6.021908,416.02075062934,323.7601086133502,22.17693273146149,416.02075062934,323.7601086133502,22.17693273146149,S,S,S

@@ -1,0 +1,19 @@
+.DS_Store
+build/
+out/
+cmake-*-build/
+*.o
+*.so
+*.dylib
+*.dSYM/
+
+# Licensed commercial benchmark distributions or local installs.
+speccpu2006-v1.0.1.zip
+cpu2017-1.0.5.iso
+speccpu2006-v1.0.1/
+cpu2017-1.0.5/
+SPEC/
+spec/
+
+# Keep curated, public summary outputs in results/.
+!results/

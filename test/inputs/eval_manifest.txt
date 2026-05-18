@@ -1,0 +1,5 @@
+# Suite|Benchmark|Sanitizers|Source|Args|ExpectDetect
+smoke|pipeline_clean|all|pipeline_sample.c||no
+juliet|asan_oob|asan|sanitizer_bug.c|asan|yes
+juliet|ubsan_shift|ubsan|sanitizer_bug.c|ubsan|yes
+juliet|msan_uninit|msan|sanitizer_bug.c|msan|yes

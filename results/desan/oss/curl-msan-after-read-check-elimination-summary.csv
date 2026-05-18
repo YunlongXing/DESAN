@@ -1,0 +1,2 @@
+Suite,Benchmark,Compile Units,Fallback Units,Original Checks,Core Checks,Core / All,Removed Checks,Removed / All,Removed / Core,Runtime Native,Runtime Before,Runtime After,Sanitizer Overhead %,DESAN Overhead %,Overhead Reduction %,Sanitizer Overhead %,DESAN Overhead %,Overhead Reduction %,Native Status,Before Status,After Status
+OpenSource,curl,380,35,39072,39072,100.0,30978,79.28439803439802,79.28439803439802,0.06471466666666667,0.164968,0.148093,154.91593868468766,128.83993324542607,16.832358026333292,154.91593868468766,128.83993324542607,16.832358026333292,S,S,S
