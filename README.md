@@ -271,34 +271,43 @@ python3 scripts/sanrazor_removed_access_summary.py \
 
 ## Representative Results
 
-DESAN summarized SPEC results:
+The tables below use the same filtering policy as the paper evaluation: a
+configuration is included only when all execution statuses are successful and
+both inserted and removed check counts are non-zero. Runtime metrics use
+`A = native runtime`, `B = original sanitizer runtime`, and `C = DESAN runtime`:
+`Sanitizer Overhead = (B-A)/A`, `DESAN Overhead = (C-A)/A`, and
+`Overhead Reduction = (B-C)/(B-A)`. Values are medians unless otherwise noted.
 
-| Suite | Sanitizer | Benchmarks | Original Checks | Core/All | Removed/Core | Weighted Overhead Reduction |
-|---|---:|---:|---:|---:|---:|---:|
-| CPU2006 | ASan | 31 | 568,963 | 94.05% | 61.50% | 19.54% |
-| CPU2006 | UBSan | 22 | 1,438,462 | 84.84% | 54.03% | 42.29% |
-| CPU2006 | MSan | 31 | 783,832 | 100.00% | 71.21% | 50.38% |
-| CPU2017 | ASan | 47 | 2,106,782 | 95.86% | 59.89% | 5.63% |
-| CPU2017 | UBSan | 47 | 4,934,790 | 87.31% | 53.59% | 25.95% |
-| CPU2017 | MSan | 47 | 3,787,777 | 100.00% | 73.77% | -574.26% |
+DESAN results:
 
-The CPU2017 MSan result is included for completeness; MSan measurements can be
-noisy and highly sensitive to runtime/library setup.
+| Dataset | Sanitizer | N | Core/All | Removed/All | Sanitizer OH | DESAN OH | OH Reduction |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| CPU2006 | ASan | 19 | 98.67% | 60.56% | 104.02% | 62.88% | 21.83% |
+| CPU2006 | UBSan | 19 | 85.63% | 44.34% | 218.70% | 128.10% | 44.14% |
+| CPU2006 | MemSan | 12 | 100.00% | 78.72% | 471.93% | 254.95% | 43.82% |
+| CPU2017 | ASan | 20 | 98.84% | 55.08% | 102.45% | 44.20% | 50.81% |
+| CPU2017 | UBSan | 20 | 84.78% | 41.07% | 314.42% | 183.90% | 48.00% |
+| CPU2017 | MemSan | 14 | 100.00% | 78.38% | 273.33% | 364.33% | 34.04% |
+| Open source | ASan | 20 | 94.89% | 51.02% | 109.65% | 88.55% | 11.55% |
+| Open source | UBSan | 20 | 89.08% | 42.91% | 88.00% | 43.93% | 54.10% |
+| Open source | MemSan | 19 | 100.00% | 72.52% | 254.24% | 155.04% | 22.18% |
 
-ASAN-- comparison summary:
+ASAN-- comparison on ASan:
 
-| Suite | Removed Checks | Removed/Original | Removed READ | Removed WRITE |
-|---|---:|---:|---:|---:|
-| CPU2006 | 254,233 | 32.40% | 67.84% | 31.94% |
-| CPU2017 | 864,222 | 29.57% | 68.62% | 31.22% |
+| Dataset | N | DESAN Removed | ASAN-- Removed | ASAN-- READ | ASAN-- WRITE | DESAN OH Red. | ASAN-- OH Red. |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| CPU2006 | 19 | 60.56% | 30.45% | 69.05% | 30.95% | 21.83% | 9.62% |
+| CPU2017 | 20 | 55.08% | 30.95% | 63.41% | 36.35% | 50.81% | 13.68% |
+| Open source | 20 | 51.02% | 25.43% | 65.88% | 34.12% | 11.55% | 0.27% |
 
 SanRazor UBSan comparison on CPU2006, using Detected Disabled as removed:
 
-| Level | Removed Checks | Removed/Original | Removed READ | Removed WRITE | Removed UNKNOWN |
-|---|---:|---:|---:|---:|---:|
-| L0 | 63,174 | 29.30% | 28.52% | 6.36% | 65.12% |
-| L1 | 80,722 | 37.32% | 31.66% | 9.95% | 58.39% |
-| L2 | 110,755 | 51.37% | 27.64% | 9.06% | 63.29% |
+| Method | N | Removed | OH Reduction | Removed READ | Removed WRITE | Removed UNKNOWN |
+|---|---:|---:|---:|---:|---:|---:|
+| DESAN | 10 | 46.34% | 47.91% | 100.00% | 0.00% | 0.00% |
+| SanRazor-L0 | 10 | 40.31% | 12.62% | 26.79% | 5.26% | 68.52% |
+| SanRazor-L1 | 10 | 51.44% | 30.55% | 28.76% | 7.10% | 57.78% |
+| SanRazor-L2 | 10 | 70.65% | 69.08% | 26.68% | 6.91% | 63.48% |
 
 Full CSV/Markdown outputs are in `results/`.
 
